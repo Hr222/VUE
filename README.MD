@@ -1,4 +1,4 @@
-#####前端VUE框架使用总结#####
+<center>前端VUE框架使用总结<center>
 1.vue使用基本的变量为胡子语法(官方名称为mustache语法), 例:
 const app = new Vue({
       el : '#app',
