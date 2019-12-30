@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-once语法</title>
+</head>
+<body>
+
+<!-- v-once是只要加载一次不需要后续的响应式更新,性质上类似java中被final修饰的static变量 -->
+<div id="app">
+  <h1>{{message}}</h1>
+  <h1>{{count}}</h1>
+  <h1>{{count * 2}}</h1>
+  <h1>{{name}}</h1>
+  <h1>{{name + ' ' + message}}</h1>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el : '#app',
+    data : {
+      message : '你好',
+      count : 10,
+      name : 'hr222'
+    }
+  })
+</script>
+
+</body>
+</html>
