@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!-- v-once是只要加载一次不需要后续的响应式更新,性质上类似java中被final修饰的static变量 -->
+<div id="app">
+  <h1>{{url}}</h1>
+  <h1 v-html="url"></h1>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el : '#app',
+    data : {
+      url : '<a href="http://www.baidu.com">百度一下</a>'
+    }
+  })
+</script>
+
+
+</body>
+</html>
