@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!-- v-bind是实际样例中使用最多的实际中用的都是动态绑定的. -->
+<div id="app">
+  <!-- 下面展示的是错误的写法 -->
+  <input type="text" value="{{name}}"></input>
+  <a href="{{url}}">百度一下</a>
+
+  <!-- 下面是常规写法,一般用的少 -->
+  <input type="text" v-bind:value="name"></input>
+  <a v-bind:href="url">百度一下</a>
+
+  <!-- 下面是语法糖的写法,一般推荐使用这个 -->
+  <input type="text" :value="name"></input>
+  <a :href="url">百度一下</a>
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el : '#app',
+    data : {
+      url : 'http://www.baidu.com',
+      name : 'hr222'
+    }
+  })
+</script>
+
+</body>
+</html>
