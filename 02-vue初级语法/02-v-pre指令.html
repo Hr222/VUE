@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!-- v-pre指令是要求不要编译mustache语法的指令要求原封不动的显示出来,使用情况的话和html,once一样不是很多. -->
+<div id="app">
+  <h1>{{url}}</h1>
+  <h1 v-pre>{{url}}</h1>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el : '#app',
+    data : {
+      url : '<a href="http://www.baidu.com">百度一下</a>'
+    }
+  })
+</script>
+
+</body>
+</html>
