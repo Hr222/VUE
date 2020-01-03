@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+  .active {
+    color: red;
+  }
+</style>
+
+<body>
+
+<!-- v-bind是实际样例中使用最多的实际中用的都是动态绑定的. -->
+<div id="app">
+
+  <!-- 下面是基础做法但是实际上多此一举,平时开发压根没有什么卵用 -->
+  <h2 class="active">{{name}}</h2>
+  <h2 :class="active">{{name}}</h2>
+
+  <!-- 下面说的是动态的绑定class样式 -->
+  <!-- <h2 :class="{类名: boolean, 类名2: boolean}">{{name}}</h2> -->
+
+  <!-- 参考该下例子,一般情况下会把对应的属性放在data中 -->
+  <h2 :class="{active: activeFlag, line:line}">{{name}}</h2>
+
+  <!-- 下面是有应用具体情况的使用.第一个class是一般网页中必备元素的时候的都用的可以这样做,vue会自动合并 -->
+  <h2 class="normal" :class="{active: activeFlag, line:line}">{{name}}</h2>
+
+  <!-- 下面是一个示例需求通过按钮修改样式 -->
+  <h2 class="normal" :class="{active: activeFlag, line:line}">{{name}}</h2>
+  <button v-on:click="btnClock">change</button>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el : '#app',
+    data : {
+      url : 'http://www.baidu.com',
+      name : 'hr222',
+      active : 'active',
+      activeFlag　: true,
+      line : true
+    },
+    methods : {
+      btnClock : function () {
+        this.activeFlag = false
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
