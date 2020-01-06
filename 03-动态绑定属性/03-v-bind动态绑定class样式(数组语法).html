@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="app">
+
+  <!-- 下面展示动态绑定的数组形式 -->
+  <h2 class="title" :class="[active, line]">{{name}}</h2>
+
+  <!-- 也可以这样写,但和上面的区别是上面用到的是vue中的变量而这个是直接是active, line编译好后就是title active line -->
+  <h2 class="title" :class="['active', 'line']">{{name}}</h2>
+
+  <!-- 第三种通过方法形式设定class属性 -->
+  <h2 class="title" :class="classMsg()">{{name}}</h2>
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      url: 'http://www.baidu.com',
+      name: 'hr222',
+      active: 'active',
+      activeFlag: true,
+      line: true
+    },
+    methods: {
+      classMsg : function () {
+        return [this.active, this.line]
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

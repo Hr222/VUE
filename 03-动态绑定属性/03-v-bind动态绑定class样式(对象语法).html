@@ -32,6 +32,10 @@
   <!-- 下面是一个示例需求通过按钮修改样式 -->
   <h2 class="normal" :class="{active: activeFlag, line:line}">{{name}}</h2>
   <button v-on:click="btnClock">change</button>
+
+  <!-- 下面是将对象信息变成通过method方式获取 -->
+  <h2 class="normal" :class="classMessage()">{{name}}</h2>
+
 </div>
 
 <script src="../js/vue.js"></script>
@@ -39,18 +43,22 @@
 <script>
 
   const app = new Vue({
-    el : '#app',
-    data : {
-      url : 'http://www.baidu.com',
-      name : 'hr222',
-      active : 'active',
-      activeFlag　: true,
-      line : true
+    el: '#app',
+    data: {
+      url: 'http://www.baidu.com',
+      name: 'hr222',
+      active: 'active',
+      activeFlag: true,
+      line: true
     },
-    methods : {
-      btnClock : function () {
+    methods: {
+      btnClock: function () {
         this.activeFlag = false
+      },
+      classMessage: function () {
+        return {active: this.active, line: this.line}
       }
+
     }
   })
 </script>

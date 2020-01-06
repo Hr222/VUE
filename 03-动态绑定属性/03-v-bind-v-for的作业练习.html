@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+  .active {
+    color: red;
+  }
+</style>
+
+<body>
+
+<div id="app">
+  <ul>
+    <li @click="getIndex(index)" :class="[liIndex === index ? 'active' : '']" v-for="(cartoon, index) in msg">
+      {{index}}-{{cartoon}}
+    </li>
+  </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      msg: ['火影忍者', '海贼王', '死神', '高达'],
+      liIndex: -1
+    },
+    methods: {
+      getIndex: function (index) {
+        this.liIndex = index;
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
