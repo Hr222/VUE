@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- 本节讲解vue的计算属性,下面列举和计算属性(可以做到相同的效果)有点关系的代码 -->
+  <h2>{{firstName}} {{lastName}}</h2>
+
+  <h2>{{firstName + ' ' + lastName}}</h2>
+
+  <h2>{{getFullName()}}</h2>
+
+  <!-- 这个是计算属性的使用 -->
+  <h2>{{fullName}}</h2>
+
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      firstName: 'Bug',
+      lastName: 'hr222'
+    },
+    //计算属性虽然写法上面和methods一样但是却是作为一个属性使用这点需要注意
+    computed: {
+      fullName: function () {
+        return this.firstName + ' ' + this.lastName
+      }
+    },
+    methods: {
+      getFullName: function () {
+        return this.firstName + ' ' + this.lastName
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

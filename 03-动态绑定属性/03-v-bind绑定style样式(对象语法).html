@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- 对象属性用的都是key-value的形式这点和class是一样所以不做过多的赘述 -->
+  <h3 :style="{fontSize: '50px'}">{{name}}</h3>
+
+  <!-- 下面展示错误的样式,因为value不行平常的style的写法若是用平常的css写法会出现跑去Vue对象寻找对应的变量 -->
+  <!--<h3 :style="{fontSize: 50}">{{name}}</h3>-->
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      name: 'hr222',
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <!-- 绑定样式的数组很少用了解就好了,因为正常情况下没有人会这样做,对象还是比较多的 -->
+  <h2 :style="[active, line]">{{name}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      name: 'hr222',
+      active: {color: 'red'},
+      line: {fontSize: '58px'}
+    }
+  })
+</script>
+
+</body>
+</html>
