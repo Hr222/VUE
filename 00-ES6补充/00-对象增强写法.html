@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //本节讲解ES6中的对象增强写法
+
+  //下面这个是ES5的写法
+  const name = 'hr222';
+  const id = 19;
+
+  const obj = {
+    name: name,
+    id: id,
+    //这个是function的写法
+    test: function () {
+      console.log('你好啊');
+    }
+  }
+  //上面是关于ES5的写法不是很方便推荐使用ES6的增强写法
+
+  //这个是ES6的增强写法
+  const obj1 = {
+    name, id,
+    test() {
+      console.log('我很好啊');
+    }
+  }
+
+  console.log(obj);
+  console.log(obj1);
+
+
+</script>
+
+</body>
+</html>
