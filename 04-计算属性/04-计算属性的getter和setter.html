@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName1}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      firstName: 'Bug',
+      lastName: 'hr222'
+    },
+    computed: {
+      //下面展示的是计算属性的全貌
+
+      //这个就是一个计算属性的全面写法,包含get,set函数,但是一般set属性不会书写,因为我们想让他只读
+      //至于get,set这点和java的很想不多赘述
+      fullName: {
+        //当set方法为空,这个属性就是只读了,下面这个可以不写
+        set: function (newValue) {
+          const temp = newValue.split(' ');
+          this.firstName = temp[0];
+          this.lastName = temp[1];
+        },
+        get: function () {
+          return this.firstName + ' ' + this.lastName
+        }
+      },
+
+      //这个是简写,set方法不写后的写法就和我们之前写的methods中的函数一样但实则不然
+      fullName1: function () {
+        return this.firstName + ' ' + this.lastName
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

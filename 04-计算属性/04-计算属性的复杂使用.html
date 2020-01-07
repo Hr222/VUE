@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>总价格: {{getAllPrice()}} </h2>
+  <h2>总价格: {{getAllPriceByES6()}} </h2>
+  <h2>总价格: {{getAllPriceByES61()}} </h2>
+  <h2>总价格: {{allPrice}} </h2>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      books: [
+        {id: 1, name: 'hr222', price: 150},
+        {id: 2, name: 'bug', price: 159},
+        {id: 3, name: 'hr188', price: 200}
+      ]
+    },
+    //计算属性虽然写法上面和methods一样但是却是作为一个属性使用这点需要注意
+    computed: {
+      allPrice: function () {
+        //下面有关于ES6的新功能
+        let allPrice = 0;
+        //这个形式上和第一个一样
+        for (let i in this.books) {
+          allPrice += this.books[i].price
+        }
+        return allPrice
+      }
+    },
+    //有些时候推荐使用计算属性是因为计算属性只进行一次,而函数每次调用都会计算浪费性能.所以下面每调用一次就会计算一次
+    methods: {
+      getAllPrice: function () {
+        //这个是ES5的循环遍历
+        let allPrice = 0;
+        for (let i = 0; i < this.books.length; i++) {
+          allPrice += this.books[i].price
+        }
+        return allPrice
+      },
+      getAllPriceByES6: function () {
+        //下面有关于ES6的新功能
+        let allPrice = 0;
+        //这个形式上和第一个一样
+        for (let i in this.books) {
+          allPrice += this.books[i].price
+        }
+        return allPrice
+      },
+      getAllPriceByES61: function () {
+        //下面有关于ES6的新功能
+        let allPrice = 0;
+        //这个就是forEach的形式,推荐使用这个
+        for (let book of this.books) {
+          allPrice += book.price
+        }
+        return allPrice
+      }
+
+    }
+  })
+</script>
+
+</body>
+</html>
