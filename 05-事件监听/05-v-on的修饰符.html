@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- 本节说明v-on的修饰符 -->
+  <div id="pao" @click="pao">
+    <h2>这个会冒泡到pao这个div</h2>
+    <button @click="btnClick">冒泡</button>
+  </div>
+
+  <!-- 下面介绍.stop修饰符就是阻止冒泡行为的 -->
+  <div @click="pao">
+    <h2>这个不会会冒泡到这个div</h2>
+    <button @click.stop="notPaoClick">冒泡</button>
+  </div>
+
+  <!-- 下面这个是阻止默认行为一般用于form表单居多(不过现在用A标签来代替居多?) -->
+  <form action="baidu">
+    <input type="submit" value="阻止提交" @click.prevent="submitClick">
+    <!-- prevent用于阻止这个没阻止会提交 -->
+    <input type="submit" value="提交">
+  </form>
+
+  <!-- 下面这个监听某个按键 -->
+  <!-- 第一个是键的别名可以使用,第二种是需要查询对应的键的编号需要去查找 -->
+  <input type="text" @keyup.enter="enterClick">
+  <input type="text" @keyup.13="enterClick">
+
+  <!-- 这个是仅生效一次的一般不会用到了解就好了 -->
+  <button @click.once="onceClick">生效一次</button>
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      abc: 'hr222'
+    },
+    methods: {
+      btnClick() {
+        console.log('这个会冒泡');
+      },
+      pao() {
+        console.log('pao冒到了');
+      },
+      notPaoClick() {
+        console.log('这个不会冒泡');
+      },
+      submitClick() {
+        console.log('我阻止了默认行为');
+      },
+      enterClick() {
+        console.log('回车事件');
+      },
+      onceClick() {
+        console.log('生效一次');
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
