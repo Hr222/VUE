@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <!-- 本节讲解methods属性下的和计算属性的区别 -->
+
+  <!-- 这个计算属性 -->
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+
+  <!-- 这个方法属性 -->
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+
+  <!-- 总结:通过console的打印可以知道这边计算属性是有缓存的只计算一次后期使用是直接从缓存拿出来的,
+   至于methods方法就每次使用都会调用函数,这会有性能上的浪费所以一般情况下计算什么的都会使用计算属性而非
+   methods方法.同时修改了对应的属性也会重新除非对应的方法.实例中我修改了firstName
+   打印出来也是出现了一次fullName和3次getFullName-->
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      firstName: 'Bug',
+      lastName: 'hr222'
+    },
+    computed: {
+      fullName: function () {
+        console.log('fullName');
+        return this.firstName + ' ' + this.lastChild
+      }
+    },
+    methods: {
+      getFullName: function () {
+        console.log('getFullName');
+        return this.firstName + ' ' + this.lastChild
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
