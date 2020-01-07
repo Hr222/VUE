@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button>1</button>
+<button>2</button>
+<button>3</button>
+
+<span>1</span>
+<span>2</span>
+<span>3</span>
+
+<script>
+  //1.ES5中的VAR存在的问题
+  if (true) {
+    var name = 'hello';
+    console.log(name);
+  }
+  name = 'hr222';
+  console.log(name);
+
+  for (var i = 0; i < 5; i++) {
+  }
+  console.log(i);
+  //上面说明了一个问题,不管是在if还是for中var定义的变量都是有问题的属于全局变量.var能跨域使用
+
+  //下面说明一个异步调用的bug问题
+  /*var btns = document.getElementsByTagName('button');
+  for (var i = 0;i < btns.length;i++){
+    btns[i].addEventListener('click', function () {
+      console.log('第' + i + '按钮');
+    })
+  }*/
+  //上面这个例子说明了当引用的变量是个异步的时候,会出现当要调用的时候回去作用域中寻找i值而这个和我们一开始做的时候的设想不一样
+
+  //这个是解决方法使用匿名函数的方式(闭包,也可以使用函数方式来解决这个问题).
+  var btns = document.getElementsByTagName('button');
+  for (var i = 0; i < btns.length; i++) {
+    (function (num) {
+      btns[num].addEventListener('click', function () {
+        console.log('第' + num + '按钮');
+      })
+    })(i)
+  }
+  //上面这个就是解决方法了,这个就是ES5的解决方式,因为如我们写平常js那样,只有函数才有作用域
+
+  //下面是ES6的let关键字了,他是有作用域的
+  var span = document.getElementsByTagName('span');
+  for (let i = 0; i < span.length; i++) {
+    span[i].addEventListener('click', function () {
+      console.log('第' + i + '个span');
+    })
+  }
+  console.log(i)
+  //上面能解决作用域这问题但是还是能通过跨域访问到这个变量
+
+</script>
+
+</body>
+</html>
