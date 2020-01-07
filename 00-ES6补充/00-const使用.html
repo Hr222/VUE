@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  //本节讲解const相关知识
+
+  //const是用于定义常量,同时不支持修改类似于java中的final static这样但是有些事不一样的
+  /*const name = 'hr222';
+  name = 'bug';
+
+  const bug;
+  bug = 'biubiu';*/
+  //因此上面代码都是通过不了编译的这点应该没有什么好说明的,和Java中的final static中很像
+
+  //下面说一个特殊情况,对象属性
+  const obj = {
+    id: 1,
+    type: '学生',
+    name: 'hr222'
+  }
+  obj.type = '老师';
+  console.log(obj.type);
+  //为什么上面是可以的,但是上面第一种为什么是不行呢,这点就涉及到了内存指向问题,
+  //常量为啥不行,因为计算器开辟了另外一个地址到这个数据中.而对象内存指向却不会
+  //只要内存指向没有改变即可那么set方法什么的都是允许的,这就为什么对象用const
+  //修改属性却没有报异常而常量却报异常的
+
+</script>
+
+</body>
+</html>
