@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- 这个是无参数的写法 -->
+  <button @click="getLog()">无参数</button>
+  <button @click="getLog">无参数1</button>
+  <!-- 当参数是无参数的时候是可以省略括号 -->
+
+  <!-- 这个是当参数为一个的时候的情况 -->
+  <!-- 当需要传递event事件对象的时候可以用下面第一个,可以将括号去掉 -->
+  <button @click="getLogByParam">一个参数参数</button>
+
+  <!-- 下面和第二个区别之前已经说明过了这里再说多一次,abc不加引号,会去对象中寻找对应的abc属性,若是加了引号则是传入字符串 -->
+  <button @click="getLogByParam('abc')">一个参数参数</button>
+  <button @click="getLogByParam(abc)">一个参数参数</button>
+
+  <!-- 下面的第一行是错误的传递event事件写法,这样会导致去对象属性中寻找event属性,若是需要传递event属性则需要加$ -->
+  <button @click="getLogByParam(event)">一个参数参数</button>
+  <button @click="getLogByParam($event)">一个参数参数</button>
+  <!-- END -->
+
+  <!-- 这个是两个参数的时候 -->
+
+  <!-- 若是没有传递参数vue会将第一个参数默认传递事件对象,而后面则是默认值(注:函数中的形参模式值都是undefined) -->
+  <button @click="getLogByParams">多个参数参数</button>
+  <!-- 这个和上面一样 -->
+  <button @click="getLogByParams(abc)">多个参数参数</button>
+  <!-- 这个是正确的写法 -->
+  <button @click="getLogByParams(abc, abc)">多个参数参数</button>
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      abc: 'hr222'
+    },
+    methods: {
+      getLog() {
+        console.log('这个是无参数的函数');
+      },
+      getLogByParam(obj) {
+        console.log(obj);
+      },
+
+      getLogByParams(obj, obj1) {
+        console.log(obj, ' --- ', obj1);
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
