@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <!-- 本节讲解的是v-if的相关使用,这里一般情况下不会用的那么复杂的因为这样子的话不如一个计算属性来的实在 -->
+
+  <!-- 通常情况下一个if就够了 -->
+  <h2 v-if="score >= 90">优秀</h2>
+  <h2 v-else-if="score < 90 && score > 70">良好</h2>
+  <h2 v-else-if="score < 70 && score > 60">合格</h2>
+  <h2 v-else="score < 60">差</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      score: 90
+    }
+  })
+</script>
+
+</body>
+</html>
