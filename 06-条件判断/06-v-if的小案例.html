@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <span v-if="isUser">
+    <label for="username"></label>
+    <input type="text" id="username" placeholder="用户名称">
+  </span>
+  <span v-else>
+    <label for="email"></label>
+    <input type="text" id="email" placeholder="用户邮箱">
+  </span>
+  <button @click="isUser = !isUser">切换</button>
+
+  <span v-if="is">
+    <label for="name"></label>
+    <input type="text" id="name" placeholder="名称" key="name">
+  </span>
+  <span v-else>
+    <label for="password"></label>
+    <input type="text" id="password" placeholder="密码" key="password">
+  </span>
+  <button @click="is = !is">切换</button>
+
+  <!-- 通过对比可以知道isUser类型的时候切换数据,原本用户的数据信息是不会被清除掉的,而第二种是被清除掉了
+   这里就涉及到了VUE的复用问题,vue的渲染并非一开始就全部渲染上去,而是在内存里创建一个虚拟的dom(性能考虑).然后再这里做好后
+   再渲染到浏览器里面的而isUser的问题就是当用户有数据的时候key属性默认是无的因此VUE认为这里是能复用,而is中不存在这个问题
+   这就是因为key不同因此不能不服用
+   -->
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      isUser: true,
+      is: true
+    }
+  })
+</script>
+
+</body>
+</html>

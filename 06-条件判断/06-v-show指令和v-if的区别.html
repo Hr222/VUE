@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <button @click="is = !is">切换</button>
+  <span v-show="is">我是v-show</span>
+
+  <button @click="isUser = !isUser">切换</button>
+  <span v-if="isUser">我是v-if</span>
+
+  <!-- 经过对比可以知道v-if直接将一个dom直接抹除掉了而show不同,show直接
+   display:none这样的作法.这就是他们的区别.若频繁切换的话推荐使用v-show
+   仅是一次的话使用if命令即可
+   -->
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      isUser: true,
+      is: true
+    }
+  })
+</script>
+
+</body>
+</html>
