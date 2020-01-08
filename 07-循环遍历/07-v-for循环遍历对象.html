@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- 本节说明的是vue的对象遍历 -->
+
+  <!-- 相面回顾数组的遍历和获取下表的遍历 -->
+  <ul>
+    <li v-for="item in numbers">{{item}}</li>
+  </ul>
+
+  <ul>
+    <li v-for="(item, index) in numbers">{{item}} -- {{index}}</li>
+  </ul>
+
+  <!-- 上面第二种方式是元组形式 -->
+  <ul>
+    <li v-for="item in obj">{{item}}</li>
+  </ul>
+
+  <ul>
+    <li v-for="(item, index) in obj">{{item}} -- {{index}}</li>
+  </ul>
+
+  <ul>
+    <li v-for="(item, key, ind) in obj">{{item}} -- {{key}} -- {{ind}}</li>
+  </ul>
+
+  <!-- 通过上面的例子可以知道默认下是获取对象中的value值,而若是使用两个形式上的用到就是
+   value-key的形式而获取不到下表,第三种则是value-key-index形式.(形式固定不管你第二个参数名称如何都是key值
+   第三也是)
+   -->
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      obj: {
+        id: 19,
+        name: 'hr222',
+        price: 20
+      },
+      numbers: ['你好', 'hr222', 'bug', 'four']
+    }
+  })
+</script>
+
+</body>
+</html>
