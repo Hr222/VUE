@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- 本节讲解v-model指令的使用,v-model能够双向绑定(简单来说就是网页上面修改了对应是数据也会改变,反向也行的) -->
+  <input type="text" v-model="message">
+  {{message}}
+
+  <!-- 这个是v-model的原理,事实上v-model中绑定了input和value这两个属性所以才能做到这样 -->
+  <input type="text" :value="msg" @input="msg = $event.target.value">
+  {{msg}}
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'hr222',
+      msg: 'bug'
+    }
+  })
+</script>
+
+</body>
+</html>
