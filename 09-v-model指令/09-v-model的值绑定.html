@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>untitled</title>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- 值绑定,一般情况下推荐使用的是这个.之前那几个是熟悉操作,一般情况下不推荐写死,应当写在Data里面让后动态的去
+   渲染这些东西,方便后续的操作这些-->
+
+  <label v-for="item in hobbies" :for="item">
+    <input type="checkbox" :value="item" v-model="hobby" :id="item">{{item}}
+  </label>
+  {{hobby}}
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      hobby: [],
+      hobbies: ['篮球', '足球', '羽毛球', '乒乓球']
+    }
+  })
+</script>
+
+</body>
+</html>

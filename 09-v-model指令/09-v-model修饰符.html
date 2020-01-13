@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+
+  <!-- lazy修饰符 -->
+  <label for="text">
+    <input type="text" id="text" v-model.lazy="text">
+    {{text}}
+  </label>
+
+  <!-- number修饰符,用于判定数字的,默认的是String,当输入数字时会自动转换为数字 -->
+  <label for="number">
+    <input type="text" id="number" v-model.number.lazy="number">
+    {{number}} - {{typeof number}}
+  </label>
+
+  <!-- trim去除空格 -->
+  <label for="trim">
+    <input type="text" id="trim" v-model.trim.lazy="trim">
+    {{trim}}
+  </label>
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      text: '',
+      number: '',
+      trim: ''
+    }
+  })
+</script>
+
+</body>
+</html>

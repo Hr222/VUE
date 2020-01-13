@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+
+  <label>
+    <input type="checkbox" v-model="isAgree" value="true">同意
+    {{isAgree}}
+  </label>
+
+  <label>
+    <input type="checkbox" v-model="hobby" value="1">乒乓球
+    <input type="checkbox" v-model="hobby" value="2">羽毛球
+    <input type="checkbox" v-model="hobby" value="3">足球
+    <input type="checkbox" v-model="hobby" value="4">篮球
+    {{hobby}}
+  </label>
+
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      isAgree: [],
+      hobby: []
+    }
+  })
+</script>
+
+</body>
+</html>
